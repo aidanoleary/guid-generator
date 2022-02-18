@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuidGenerator.Controllers
 {
@@ -20,7 +19,9 @@ namespace GuidGenerator.Controllers
         }
 
         [HttpGet]
-        public List<Guid> Get([FromQuery] int numberOfGuids = 1)
+        [ProducesResponseType(typeof(string[]), 200)]
+        [ProducesResponseType(400)]
+        public List<Guid> Get([FromQuery][Range(1,1000)] int numberOfGuids = 1)
         {
             return guidGeneratorService.GenerateGuids(numberOfGuids);
         }
