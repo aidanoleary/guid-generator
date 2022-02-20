@@ -11,7 +11,7 @@ namespace GuidGenerator.Infrastructure
     {
         public static void RegisterCustomServices(this IServiceCollection services)
         {
-            services.AddTransient<IGuidGeneratorService, GuidGeneratorService>();
+            services.AddTransient<IGeneratorService, GeneratorService>();
         }
     }
 }
